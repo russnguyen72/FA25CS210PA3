@@ -117,9 +117,9 @@ void printPath(pair<int,int> exitcell,
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
-// bool dfs(……) {
-//     // Your code here
-// }
+bool dfs(int ent_r, int ent_c, const vector<vector<int>>& maze, bool visited, int parent_r, int parent_c, int exit_r, int exit_c) {
+    return parent_r == exit_r && parent_c == exit_c;
+}
 
 
 // ----------------------------------------------------------
@@ -170,6 +170,8 @@ int main() {
     // } else {
     //     cout << "\nNo path exists.\n";
     // }
+
+    cout << endl << endl << "Testing for exit detection: " << dfs(0, 0, maze, false, 1, 1, 1, 1);
 
     return 0;
 }
