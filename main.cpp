@@ -117,8 +117,13 @@ void printPath(pair<int,int> exitcell,
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
-bool dfs(int ent_r, int ent_c, const vector<vector<int>>& maze, bool visited, int parent_r, int parent_c, int exit_r, int exit_c) {
-    return parent_r == exit_r && parent_c == exit_c;
+bool dfs(int r, int c, const vector<vector<int>>& maze, vector<vector<bool>>& visited, vector<vector<int>>& parent_r, vector<vector<int>>& parent_c, int exit_r, int exit_c) {
+    const int bottomRow = maze.size() - 1, rightCol = maze[0].size() - 1;
+    if (r < 0 || r > bottomRow || c < 0 || c > rightCol || visited[r][c]) return false;
+
+    visited[r][c] = true;
+
+    return r == exit_r && c == exit_c;
 }
 
 
