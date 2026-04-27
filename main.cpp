@@ -120,10 +120,16 @@ void printPath(pair<int,int> exitcell,
 bool dfs(int r, int c, const vector<vector<int>>& maze, vector<vector<bool>>& visited, vector<vector<int>>& parent_r, vector<vector<int>>& parent_c, int exit_r, int exit_c) {
     const int bottomRow = maze.size() - 1, rightCol = maze[0].size() - 1;
     if (r < 0 || r > bottomRow || c < 0 || c > rightCol || visited[r][c]) return false;
+    if (r == exit_r && c == exit_c) return true;
 
     visited[r][c] = true;
 
-    return r == exit_r && c == exit_c;
+    if (dfs(r + 1, c, maze, visited, parent_r, parent_c, exit_r, exit_c) ||
+        dfs(r, c + 1, maze, visited, parent_r, parent_c, exit_r, exit_c) ||
+        dfs(r - 1, c, maze, visited, parent_r, parent_c, exit_r, exit_c) ||
+        dfs(r, c - 1, maze, visited, parent_r, parent_c, exit_r, exit_c)) return true;
+
+    return false;
 }
 
 
@@ -164,7 +170,10 @@ int main() {
     // STUDENT WORK:
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
-    // bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
+    bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
+    bool notFound = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, -1, -1);
+    cout << found << endl;
+    cout << notFound << endl;
 
     // ------------------------------------------------------
     // STUDENT WORK:
@@ -176,7 +185,6 @@ int main() {
     //     cout << "\nNo path exists.\n";
     // }
 
-    cout << endl << endl << "Testing for exit detection: " << dfs(0, 0, maze, false, 1, 1, 1, 1);
 
     return 0;
 }
