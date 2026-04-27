@@ -21,3 +21,10 @@ I began further developing the DFS maze searching algorithm. I implemented bound
 #### Date: 2026-04-26
 
 I implemented the recursive part of the DFS maze searching algorithm. While it does not detect walls yet, it can detect whether an exit exists in the maze or not. If the exit does not exist (unreachable), it outputs false. Otherwise, it outputs true. The biggest takeaway is that DFS as it is right now can see whether the exit is reachable, which will be finetuned so that walls are also included in the logic of a wall being reachable or not instead of just the bounds of the maze.
+
+---
+
+### Entry 4
+#### Date: 2026-04-27
+
+I finished the implementation of the DFS maze searching algorithm. I also helped it track its path if it finds a path from the start to the end of the maze. Additionally, it can now detect walls and path accordingly. While there were a few tests conducted to ensure that it works for smaller mazes (4x4 mazes), I will also need to test a variety of different maze sizes to ensure that it works for all cases.
